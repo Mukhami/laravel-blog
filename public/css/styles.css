@@ -4,6 +4,96 @@
     text-align: center;
 }
 
+.comment-title {
+    font: 400 40px "Arizonia", Helvetica, sans-serif;
+    color: #F4645F;
+    text-align: left;
+}
+
+.author-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    float: left;
+}
+.profile-image{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    float: left;
+}
+
+.post-author-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left;
+}
+
+.post-author-name{
+    float: left;
+    margin-left: 15px;
+}
+
+.post-author-name>h5{
+    margin: 5px 0px;
+}
+.author-name{
+    float: left;
+    margin-left: 15px;
+}
+
+.post-author-time {
+    font-size: 12px;
+    font-style: italic;
+    color: #a4aaae;
+}
+.post-content{
+    clear: both;
+    margin-left: 65px;
+    font-size: 12px;
+    line-height: 1.3em;
+}
+
+.author-name>h5{
+    margin: 5px 0px;
+}
+
+.author-time {
+    font-size: 12px;
+    font-style: italic;
+    color: #a4aaae;
+}
+.comment{
+    margin-bottom: 45px;
+}
+
+.comment-content{
+    clear: both;
+    margin-left: 65px;
+    font-size: 12px;
+    line-height: 1.3em;
+}
+.profile-email{
+    clear: both;
+    margin-left: 65px;
+    font-size: 16px;
+    line-height: 1.3em;
+}
+
+.comment-like{
+    clear: both;
+    /*margin-top: -40px;*/
+    margin-left: 65px;
+    font-size: 12px;
+    line-height: 1.3em;
+}
+
 .post-title {
+    color: #F4645F;
+}
+
+.tags{
+    margin-top: 5px;
     color: #F4645F;
 }

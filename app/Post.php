@@ -1,54 +1,47 @@
 <?php
 
 namespace App;
+use Illuminate\Database\Eloquent\Model;
 
-class Post
+use Cviebrock\EloquentSluggable\Sluggable;
+
+class Post extends Model
 {
-    public function getPosts($session)
-    {
-        if (!$session->has('posts')) {
-            $this->createDummyData($session);
-        }
-        return $session->get('posts');
+    protected $fillable = ['title','user_id', 'slug', 'content'];
+
+    public function likes(){
+        return $this->hasMany('App\Like');
     }
 
-    public function getPost($session, $id)
-    {
-        if (!$session->has('posts')) {
-            $this->createDummyData();
-        }
-        return $session->get('posts')[$id];
+    public function tags(){
+        return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id')->withTimestamps();
     }
 
-    public function addPost($session, $title, $content)
-    {
-        if (!$session->has('posts')) {
-            $this->createDummyData();
-        }
-        $posts = $session->get('posts');
-        array_push($posts, ['title' => $title, 'content' => $content]);
-        $session->put('posts', $posts);
+    public function user(){
+        return $this->belongsTo('App\User', 'user_id');
     }
 
-    public function editPost($session, $id, $title, $content)
-    {
-        $posts = $session->get('posts');
-        $posts[$id] = ['title' => $title, 'content' => $content];
-        $session->put('posts', $posts);
+    public function bookmarks(){
+        return $this->hasMany('App\Bookmark' ,'user_id');
     }
 
-    private function createDummyData($session)
+    public function comments()
     {
-        $posts = [
-            [
-                'title' => 'Learning Laravel',
-                'content' => 'This blog post will get you right on track with Laravel!'
-            ],
-            [
-                'title' => 'Something else',
-                'content' => 'Some other content'
-            ]
-        ];
-        $session->put('posts', $posts);
+        return $this->hasMany(Comment::class);
     }
+
+//    use Sluggable;
+//    /**
+//     * Return the sluggable configuration array for this model.
+//     *
+//     * @return array
+//     */
+//    public function sluggable()
+//    {
+//        return [
+//            'slug' => [
+//                'source' => 'title'
+//            ]
+//        ];
+//    }
 }
